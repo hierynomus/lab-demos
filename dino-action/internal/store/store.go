@@ -14,7 +14,7 @@ import (
 )
 
 type Store interface {
-	GetActions(ctx context.Context, name string) ([]domain.Action, error)
+	Get(ctx context.Context, name string) ([]domain.Action, error)
 }
 
 type theStore struct {

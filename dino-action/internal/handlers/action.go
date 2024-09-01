@@ -20,7 +20,7 @@ func ActionHandler(cfg config.Config, store store.Store) func(c *fiber.Ctx) erro
 			return err
 		}
 
-		pois, err := store.GetActions(c.UserContext(), name)
+		pois, err := store.Get(c.UserContext(), name)
 		if err != nil {
 			log.Info().Err(err).Msg("Failed to get Actions")
 			c.Status(fiber.StatusBadRequest)
