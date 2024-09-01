@@ -28,9 +28,6 @@ func NewStore(cfg config.Config) (Store, error) {
 }
 
 func (s *theStore) loadData(ctx context.Context) (map[string][]domain.Action, error) {
-	ctx, span := otel.Tracer.Start(ctx, "Store.load")
-	defer span.End()
-
 	delay.PretendHeavyOperation()
 
 	f, err := os.Open(s.cfg.StoreContents)
@@ -47,10 +44,7 @@ func (s *theStore) loadData(ctx context.Context) (map[string][]domain.Action, er
 	return s.convert(ctx, actions), nil
 }
 
-func (s *theStore) convert(ctx context.Context, actions []domain.DinoActions) map[string][]domain.Action {
-	_, span := otel.Tracer.Start(ctx, "poiStore.loadAddresses")
-	defer span.End()
-
+func (s *theStore) convert(_ context.Context, actions []domain.DinoActions) map[string][]domain.Action {
 	delay.PretendHeavyOperation()
 
 	poisMap := make(map[string][]domain.Action)

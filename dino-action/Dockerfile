@@ -13,14 +13,13 @@ RUN go mod download
 COPY . /workspace
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o kubecon2024-poi main.go
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o app main.go
 
 # Use distroless as minimal base image to package the kommoner binary
 # Refer to https://github.com/GoogleContainerTools/distroless for more details
-FROM gcr.io/distroless/static:nonroot
+FROM registry.suse.com/suse/sle15:15.6
 WORKDIR /
-COPY --from=builder /workspace/kubecon2024-poi .
+COPY --from=builder /workspace/app .
 COPY --from=builder /workspace/pois.yaml .
-USER nonroot:nonroot
 
-ENTRYPOINT ["/kubecon2024-poi", "start"]
+ENTRYPOINT ["/app", "start"]

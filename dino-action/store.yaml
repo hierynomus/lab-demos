@@ -1,0 +1,28 @@
+- name: brontosaurus
+  actions:
+    - name: Roar
+      duration: 5
+    - name: Stomp
+      duration: 2
+    - name: Eat
+      duration: 10
+    - name: Sleep
+      duration: 8
+- name: triceratops
+  actions:
+    - name: Charge
+      duration: 3
+    - name: Stomp
+      duration: 2
+    - name: Eat
+      duration: 10
+    - name: Sleep
+      duration: 8
+- name: diplodocus
+  actions:
+    - name: Eat
+      duration: 10
+    - name: Sleep
+      duration: 8
+    - name: Stretch
+      duration: 5

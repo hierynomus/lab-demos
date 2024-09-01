@@ -45,8 +45,8 @@ func start(ctx context.Context, cfg *config.Config) error {
 
 	app := fiber.New()
 	app.Use(otelfiber.Middleware())
-
-	app.Get("/dino/:name/action", handlers.ActionHandler(*cfg, poiStore))
+	app.Get("/dino/:name/actions", handlers.AllActionsHandler(*cfg, poiStore))
+	app.Get("/dino/:name/actions/next", handlers.NextActionHandler(*cfg, poiStore))
 
 	go func() {
 		if err := app.Listen(fmt.Sprintf(":%d", cfg.Port)); err != nil {
