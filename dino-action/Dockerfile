@@ -20,6 +20,6 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o app main
 FROM registry.suse.com/suse/sle15:15.6
 WORKDIR /
 COPY --from=builder /workspace/app .
-COPY --from=builder /workspace/pois.yaml .
+COPY --from=builder /workspace/store.yaml .
 
 ENTRYPOINT ["/app", "start"]
