@@ -4,7 +4,7 @@ go 1.21.4
 
 require (
 	github.com/gofiber/contrib/otelfiber/v2 v2.0.0
-	github.com/gofiber/fiber/v2 v2.52.2
+	github.com/gofiber/fiber/v2 v2.52.5
 	github.com/hierynomus/autobind v0.0.10
 	github.com/rs/zerolog v1.27.0
 	github.com/spf13/cobra v1.5.0
